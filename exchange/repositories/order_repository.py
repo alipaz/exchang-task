@@ -68,17 +68,18 @@ class OrderRepository(BaseRepository):
 
         return order
 
-    def get_under_ten_dollar_pending_orders(self, currency_id):
-        cache_key = self.get_cache_key(f"under_10_usd_pending_orders_{currency_id}")
+    def get_under_ten_dollar_pending_orders(self):
+        cache_key = self.get_cache_key("under_10_usd_pending_orders")
         under_10_usd_orders = cache.get(cache_key)
 
         if under_10_usd_orders is not None:
             return under_10_usd_orders
 
-        pending_orders = self.order.objects.filter(currency_id=currency_id, status='pending',
-                                                   total_amount_in_usd__lt=10)
+        pending_orders = self.order.objects.filter(status='pending', total_amount_in_usd__lt=10)
         under_10_usd_orders = list(pending_orders)
         cache.set(cache_key, under_10_usd_orders)
 
         return under_10_usd_orders
+
+
 
