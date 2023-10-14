@@ -24,16 +24,3 @@ class OrderRequestValidation(serializers.Serializer):
         },
         required=True
     )
-
-    def check_is_currency_exist(self, currency_symbol):
-        test = self.currency_repository.get_single_currency('ETH')
-        print('test')
-
-    # def validate(self, data):
-    #     self.check_user_balance()
-    #     self.check_is_currency_exist()
-    #     return data
-
-    # def check_user_balance(self):
-    #     test = self.currency_repository.get_all_currency
-    #     print(test)
