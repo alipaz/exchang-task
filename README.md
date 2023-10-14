@@ -1,24 +1,21 @@
 # exchang-task
 
-This Django project provides a single API endpoint to retrieve orders and sends them to a currency exchange service using Celery.
+## Overview
 
-## Project Overview
-
-This project is a Django-based application that serves a single API endpoint. The API endpoint allows users to retrieve orders, and it utilizes Celery for background processing. When orders are retrieved, they are sent to a currency exchange service through Celery for further processing.
-"This project utilizes Celery Beat for scheduling tasks and Redis cache to manage orders with a total value under $10."
+**exchang-task** is a Django project that provides a single API endpoint for retrieving orders and sending them to a currency exchange service using Celery. It leverages Celery Beat for task scheduling and Redis cache for managing orders with a total value under $10.
 
 ## Prerequisites
 
-Before running this project, make sure you have the following prerequisites installed:
+Before running the project, ensure you have the following prerequisites installed:
 
 - Python 3.8
 - Django
 - Redis
 - Celery
-- ...
-You can install project-specific dependencies by running:
+- Other project-specific dependencies (install using `pip install -r requirements.txt`)
 
-```bash
-pip install -r requirements.txt
+After running the project, perform database migrations and create a superuser to ensure the correct functioning of the services.
 
-### Unfortunately, I didn't have time to dockerize it
+## Note
+
+Please note that the project is not Dockerized at this time due to time constraints.
