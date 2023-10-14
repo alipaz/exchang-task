@@ -20,7 +20,7 @@ class HigherTenDollarCheckoutService(CheckoutService):
                 total_amount_in_usd=self.total_amount
             )
 
-            self.buy_currency_service.buy_from_exchange(self.currency_symbol, self.total_amount)
+            self.buy_currency_service.buy_from_exchange.delay(self.currency_symbol, self.total_amount)
 
             return 'The desired currency was purchased'
         else:

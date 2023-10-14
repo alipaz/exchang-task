@@ -24,6 +24,6 @@ class OrderView(APIView):
             checkout_service = self.checkout_service_factory.create_checkout_service(order_price_in_usd, currency_symbol)
             order_request_result = checkout_service.process_order()
 
-            return Response({'hiiii'})
+            return Response({order_request_result}, status=200)
         else:
             return Response(request_validation.errors, status=status.HTTP_400_BAD_REQUEST)
