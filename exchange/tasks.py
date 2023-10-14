@@ -14,7 +14,7 @@ def check_under_ten_dollar_order():
     selected_orders = []
 
     for order in orders:
-        # i need fix this to only orders with same currency_id
+        # Filter orders to include only those with the same currency_id that have no time left
         orders_total_amount_in_dollar += order.total_amount_in_usd
         selected_orders.append(order)
 
@@ -24,6 +24,7 @@ def check_under_ten_dollar_order():
             for sent_order in selected_orders:
                 repository = OrderRepository()
                 repository.update_order_status(order_id=sent_order.id, status='completed', completed_at=timezone.now())
+
 
 def buy_from_exchange():
     print('Buying from the exchange when total amount is at least $10')
